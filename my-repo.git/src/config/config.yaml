@@ -1,0 +1,10 @@
+# src/config/config.example.yaml
+app:
+  name: TestApp
+  version: 1.0.0
+
+database:
+  host: localhost
+  port: 5432
+  user: test_user
+  password: example_password  # ⚠️ Make sure to remove real secrets before committing

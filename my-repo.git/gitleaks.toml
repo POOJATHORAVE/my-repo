@@ -1,0 +1,69 @@
+title = "Custom Gitleaks Config"
+
+# -----------------------------
+# AWS Access Keys
+# -----------------------------
+[[rules]]
+id = "aws-access-key-id"
+description = "AWS Access Key ID"
+regex = '''AKIA[0-9A-Z]{16}'''
+tags = ["aws", "key"]
+
+[[rules]]
+id = "aws-secret-access-key"
+description = "AWS Secret Access Key"
+regex = '''(?i)aws(.{0,20})?['\"][0-9a-zA-Z\/+]{40}['\"]'''
+tags = ["aws", "secret"]
+
+# -----------------------------
+# Azure Keys
+# -----------------------------
+[[rules]]
+id = "azure-client-secret"
+description = "Azure Client Secret"
+regex = '''(?i)azure(.{0,20})?['\"][0-9a-zA-Z]{32,}['\"]'''
+tags = ["azure", "secret"]
+
+# -----------------------------
+# GCP Keys
+# -----------------------------
+[[rules]]
+id = "gcp-service-account"
+description = "GCP Service Account Key"
+regex = '''(?i)\"type\":\s*\"service_account\"'''
+tags = ["gcp", "key"]
+
+# -----------------------------
+# JWT Tokens
+# -----------------------------
+[[rules]]
+id = "jwt-token"
+description = "JWT Token"
+regex = '''eyJ[A-Za-z0-9-_=]+\.eyJ[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*'''
+tags = ["jwt", "token"]
+
+# -----------------------------
+# Database Passwords
+# -----------------------------
+[[rules]]
+id = "db-password"
+description = "Database Password in env"
+regex = '''(?i)(DB_PASSWORD|MYSQL_PASSWORD|POSTGRES_PASSWORD)=['\"][^'\"]+['\"]'''
+tags = ["db", "password"]
+
+# -----------------------------
+# Generic API Keys / Tokens
+# -----------------------------
+[[rules]]
+id = "generic-api-key"
+description = "Generic API Key"
+regex = '''(?i)(api_key|apikey|token|secret)=['\"][^'\"]+['\"]'''
+tags = ["api", "key"]
+
+# -----------------------------
+# Custom Exclusions (Optional)
+# -----------------------------
+[[allowlist]]
+description = "Allowlist example"
+regex = '''example_key_to_ignore'''
+tags = ["ignore"]
