@@ -61,9 +61,18 @@ regex = '''(?i)(api_key|apikey|token|secret)=['\"][^'\"]+['\"]'''
 tags = ["api", "key"]
 
 # -----------------------------
-# Custom Exclusions (Optional)
+# Custom Exclusions (Allowlist)
 # -----------------------------
-[[allowlist]]
+[allowlist]
 description = "Allowlist example"
-regex = '''example_key_to_ignore'''
-tags = ["ignore"]
+
+# allowed regex patterns
+regexes = [
+  '''example_key_to_ignore'''
+]
+
+# optionally exclude file paths:
+# paths = ["path/to/ignore"]
+
+# optionally exclude commits:
+# commits = ["abcdef1234567890abcdef1234567890abcdef12"]
